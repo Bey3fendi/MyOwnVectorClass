@@ -36,10 +36,15 @@ public:
 
 	void delete_last_element()
 	{
-		T* new_array = new T[vector_capacity_];
+		if (vector_current_num_of_elements_ == 0) {
+			return;
+		}
 
-		for (size_t i = 0; i < (vector_current_num_of_elements_ - 1); ++i) {
-			new_array[i] = array_[i];
+		T* new_array = new T[vector_capacity_];
+		int64_t current_num_of_elements = vector_current_num_of_elements_;
+
+		for (size_t i = 0; i < (current_num_of_elements - 1); ++i) {
+				new_array[i] = array_[i];
 		}
 
 		delete[] array_;
@@ -91,15 +96,18 @@ public:
 	/// index: which index will be get from vector
 	T get(const int& index) {
 		T value;
-		try {
-			if (index < vector_capacity_) {
-				value = array_[index];
+
+		if (vector_current_num_of_elements_ != 0) {
+			try {
+				if (index < vector_capacity_) {
+					value = array_[index];
+				}
 			}
+			catch (...) {
+				std::cerr << "there is a problem" << std::endl;
+			}
+			return value;
 		}
-		catch (...) {
-			std::cerr << "there is a problem" << std::endl;
-		}
-		return value;
 	}
 
 	/// <summary>
