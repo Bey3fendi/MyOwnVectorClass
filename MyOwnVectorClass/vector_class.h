@@ -14,40 +14,6 @@ public:
 
 	//needed functions are down below
 
-    /// <summary>
-	/// increase the size of vector
-	void size_increment()
-	{
-		size_t new_capacity = vector_capacity_ * 2;
-		T* new_array = new T[new_capacity];
-
-		for (size_t i = 0; i < vector_current_num_of_elements_; ++i) {
-			new_array[i] = array_[i];
-		}
-
-		delete[] array_;
-		array_ = new_array;
-		vector_capacity_ = new_capacity;
-	}
-
-	void delete_last_element()
-	{
-		if (vector_current_num_of_elements_ == 0) {
-			return;
-		}
-
-		T* new_array = new T[vector_capacity_];
-		int64_t current_num_of_elements = vector_current_num_of_elements_;
-
-		for (size_t i = 0; i < (current_num_of_elements - 1); ++i) {
-				new_array[i] = array_[i];
-		}
-
-		delete[] array_;
-		array_ = new_array;
-		vector_current_num_of_elements_--;
-	}
-
 	/// <summary>
 	/// insert the taken element to the last
 	/// <summary>
@@ -91,7 +57,7 @@ public:
 	/// <summary>
 	/// index: which index will be get from vector
 	T get(const int& index) {
-		T value;
+		T value{};
 
 		if (vector_current_num_of_elements_ != 0) {
 			try {
@@ -103,6 +69,9 @@ public:
 				std::cerr << "there is a problem" << std::endl;
 			}
 			return value;
+		}
+		else {
+			return NULL;
 		}
 	}
 
@@ -140,6 +109,40 @@ public:
 	}
 
 private:
+	/// <summary>
+	/// increase the size of vector
+	void size_increment()
+	{
+		size_t new_capacity = vector_capacity_ * 2;
+		T* new_array = new T[new_capacity];
+
+		for (size_t i = 0; i < vector_current_num_of_elements_; ++i) {
+			new_array[i] = array_[i];
+		}
+
+		delete[] array_;
+		array_ = new_array;
+		vector_capacity_ = new_capacity;
+	}
+
+	void delete_last_element()
+	{
+		if (vector_current_num_of_elements_ == 0) {
+			return;
+		}
+
+		T* new_array = new T[vector_capacity_];
+		int64_t current_num_of_elements = vector_current_num_of_elements_;
+
+		for (size_t i = 0; i < (current_num_of_elements - 1); ++i) {
+			new_array[i] = array_[i];
+		}
+
+		delete[] array_;
+		array_ = new_array;
+		vector_current_num_of_elements_--;
+	}
+
 	//int pointer which will be stored the address of the vector!
 	T* array_; 
     

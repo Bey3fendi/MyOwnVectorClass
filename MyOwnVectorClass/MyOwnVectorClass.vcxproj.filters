@@ -16,9 +16,4 @@
       <Filter>Vector\include</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Vector\source</Filter>
-    </ClCompile>
-  </ItemGroup>
 </Project>
