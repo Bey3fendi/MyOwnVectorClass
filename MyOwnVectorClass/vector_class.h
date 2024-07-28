@@ -16,10 +16,6 @@ public:
 
     /// <summary>
 	/// increase the size of vector
-	/// <summary>
-	/// new_array: new memory allocation with new capacity
-	/// vector_element_count: element count vector have
-	/// new_capacity: new capacity of the vector 
 	void size_increment()
 	{
 		size_t new_capacity = vector_capacity_ * 2;
@@ -126,6 +122,12 @@ public:
 	/// get the current max capacity of the vector
 	size_t getcapacity() {
 		return vector_capacity_;
+	}
+
+	/// <summary>
+	/// check vector empty or not!
+	void empty() {
+		return vector_current_num_of_elements_ == 0;
 	}
 
 	/// <summary>

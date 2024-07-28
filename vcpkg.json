@@ -1,0 +1,8 @@
+{
+  "name": "my-own-vector-class",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "gtest"
+  ],
+  "builtin-baseline": "6672bab62b2c351cf0ce4c578fd2ec2490610586"
+}
